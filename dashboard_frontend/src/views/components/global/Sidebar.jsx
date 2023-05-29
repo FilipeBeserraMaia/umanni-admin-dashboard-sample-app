@@ -17,7 +17,7 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
     <MenuItem
       active={selected === title}
       style={{
-        color: colors.grey[100],
+        color: colors.grey[300],
       }}
       onClick={() => setSelected(title)}
       icon={icon}
@@ -38,7 +38,7 @@ const Sidebar = () => {
     <Box
       sx={{
         "& .pro-sidebar-inner": {
-          background: `${colors.primary[400]} !important`,
+          background: `${colors.primary[500]} !important`,
         },
         "& .pro-icon-wrapper": {
           backgroundColor: "transparent !important",
@@ -89,7 +89,10 @@ const Sidebar = () => {
                   width="100px"
                   height="100px"
                   src={`../../../assets/user.png`}
-                  style={{ cursor: "pointer", borderRadius: "50%" }}
+                  style={{ cursor: "pointer",
+                    borderRadius: "50%",
+                    border:'10px',
+                    borderColor:colors.primary[100] }}
                 />
               </Box>
               <Box textAlign="center">
@@ -99,9 +102,9 @@ const Sidebar = () => {
                   fontWeight="bold"
                   sx={{ m: "10px 0 0 0" }}
                 >
-                  Admin name {1+1 }
+                  Admin name 
                 </Typography>
-                <Typography variant="h5" color={colors.greenAccent[500]}>
+                <Typography variant="h5" color={colors.grey[300]}>
                   Default user role
                 </Typography>
               </Box>
