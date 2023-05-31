@@ -1,8 +1,11 @@
 import React from "react";
-import { Avatar,Button, Checkbox, FormControlLabel, Grid, Link, Paper, TextField, Typography } from "@mui/material";
+import { Avatar,Box,Button, Checkbox, FormControlLabel, Grid, Link, Paper, TextField, Typography } from "@mui/material";
 import LoginIcon from '@mui/icons-material/Login';
 import { tokens } from "../../theme";
 import { useTheme } from "@emotion/react";
+import ThemeButton from "./ThemeButton";
+import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
+import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 const Login = ()=>{
   const theme = useTheme()
   const colors = tokens(theme.palette.mode);
@@ -12,6 +15,13 @@ const Login = ()=>{
     <Grid>
 
       <Paper elevation={20} style={paperStyle}>
+
+        <Box 
+          display="flex"
+          justifyContent="space-between"
+        >
+          <ThemeButton/>
+        </Box>
         <Grid align='center'>
           <Avatar style={avatarStyle}><LoginIcon/></Avatar>
           <h2> Sign in </h2>
@@ -28,7 +38,7 @@ const Login = ()=>{
           }
           label="Remember me"
         />
-      <Button variant="contained" type="submit" fullWidth>Sign In  </Button>
+        <Button variant="contained" type="submit" fullWidth>Sign In  </Button>
         {/* <Typography><Link href="#">Forgot password ? </Link></Typography> */}
         <Typography>Do you have any account ?<Link href="/sign_up"> Sign up ? </Link></Typography>
       </Paper>

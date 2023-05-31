@@ -3,6 +3,7 @@ import { Avatar,Button, Checkbox, FormControlLabel, Grid, Link, Paper, TextField
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import { tokens } from "../../theme";
 import { useTheme } from "@emotion/react";
+import ThemeButton from "./ThemeButton";
 const Login = ()=>{
   const theme = useTheme()
   const colors = tokens(theme.palette.mode);
@@ -12,6 +13,7 @@ const Login = ()=>{
     <Grid>
 
       <Paper elevation={20} style={paperStyle}>
+        <ThemeButton/>
         <Grid align='center'>
           <Avatar style={avatarStyle}><PersonAddIcon/></Avatar>
           <h2> Sign up </h2>
