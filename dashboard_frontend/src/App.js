@@ -18,7 +18,7 @@ function App() {
         <div className="app">
           { true ? undefined : <Sidebar/> }
           <main className="content">
-            {  false ? undefined   : <Topbar/>}
+            {  true ? undefined   : <Topbar/>}
             <Routes> 
               <Route path='/' element={<Dashboard/>} />
               <Route path='/login' element={<Login/>} />
