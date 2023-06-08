@@ -120,15 +120,15 @@ const Sidebar = () => {
               setSelected={setSelected}
             />
             <Item
-              title="Admin Dashboard"
-              to="/admin_dashboard"
+              title="users Admin Dashboard"
+              to="/users_dashboard"
               icon={<SupervisorAccountIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
               title="My Profile"
-              to="/profile"
+              to="/my_profile"
               icon={<PersonOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}

@@ -1,6 +1,6 @@
-const Dashboard = ({ title, subtitle }) => {
-  return (<div></div>);
+const HomePage = ({ title, subtitle }) => {
+  return (<div> HOME PAGE</div>);
 };
 
 
-export default Dashboard
+export default HomePage

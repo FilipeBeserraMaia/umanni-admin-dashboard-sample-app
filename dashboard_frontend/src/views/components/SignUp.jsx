@@ -3,12 +3,18 @@ import { Avatar,Button, Checkbox, FormControlLabel, Grid, Link, Paper, TextField
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import { tokens } from "../../theme";
 import { useTheme } from "@emotion/react";
+
+import store from '../../redux/store';
 import ThemeButton from "./ThemeButton";
+import {useSelector} from 'react-redux';
 const Login = ()=>{
   const theme = useTheme()
   const colors = tokens(theme.palette.mode);
   const paperStyle={padding:20,height:'10%',width:300,margin:'20px auto' }
   const avatarStyle={backgroundColor:colors.greenAccent[500]}
+
+  const {user} = useSelector((roorReducer)=> roorReducer.sessionReducer)
+  console.log(user)
   return (
     <Grid>
 
