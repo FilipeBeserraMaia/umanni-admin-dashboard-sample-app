@@ -7,8 +7,11 @@ import {deleteUser, usersIndex} from "../../redux/users/actions"
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import DeleteForever from "@mui/icons-material/DeleteForever";
-
-
+import EditIcon from '@mui/icons-material/Edit';
+import PopUp from "../components/PopUp";
+import AddIcon from '@mui/icons-material/Add';
+import  New  from "./New";
+import  Edit  from "./Edit";
 
 
 
@@ -20,17 +23,19 @@ const UserDashboard = () => {
 
 
   const _deleteUserApi = (id) =>{
-      dispatch(deleteUser(id,(res,err)=>{
-        if(res){
-          console.log(res)
-        }
-        if(err){
-          console.log(err)
-          return;
-        }
-      }))
+    dispatch(deleteUser(id,(res,err)=>{
+      if(res){
+        console.log(res)
+      }
+      if(err){
+        console.log(err)
+        return;
+      }
+    }))
   }
-  
+
+
+
   useEffect(()=>{
     dispatch(usersIndex((res,err)=>{
 
@@ -79,6 +84,20 @@ const UserDashboard = () => {
                 <DeleteForever/>
               </Typography>
             </Button>
+
+            <PopUp   
+              custom={
+                {
+                  BtnIcon: EditIcon,
+                  iconColor:colors.blueAccent[500],
+                  formComponent: Edit,
+                  userId: id,
+                  btnColor: colors.greenAccent[500],variant:"text"
+                }
+              }
+                    
+            >
+            </PopUp>
           </Box>
         );
       },
@@ -118,9 +137,22 @@ const UserDashboard = () => {
           },
         }}
       >
+         <PopUp 
+            custom={
+                {
+                  BtnIcon: AddIcon,
+                  iconColor: colors.greenAccent[500],
+                  formComponent: New,
+                  btnColor: colors.greenAccent[500],variant:"contained"
+                }
+              }
+          >
+         </PopUp>
+
         <DataGrid  rows={collection} columns={columns} />
       </Box>
     </Box>
+
   );
 };
 

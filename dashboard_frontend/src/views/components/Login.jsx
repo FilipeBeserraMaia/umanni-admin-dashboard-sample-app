@@ -24,14 +24,14 @@ const Login = ()=>{
   const history = useNavigate();
   const {isLogged,user} = useSelector((rootReducer)=> rootReducer.sessionReducer);
 
-  // useEffect(()=>{
-  //   if(isLogged){
-  //    history('/')
-  //   }
-  // })
+  useEffect(()=>{
+    if(isLogged){
+     history('/')
+    }
+  })
 
   
-  const initialValuesForm = { email:"filipeifgcc@gmail.com", password:"12345678" }
+  const initialValuesForm = { email:"filipeifgcc@gmail.com", password:"12345679" }
   const formValidations = Yup.object().shape({
     email: Yup.string().email("Invalid Email").required("this field is required ! "), 
     password: Yup.string().required('this field is required ! '),
@@ -41,9 +41,8 @@ const Login = ()=>{
 
     dispatch(login(values,(res,err)=>{
       setSubmitting(false);
-
       if(res){
-        console.log(user)
+        console.log(res)
       }
       if(err){
         console.log(err)

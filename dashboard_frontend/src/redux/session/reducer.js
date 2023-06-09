@@ -1,7 +1,7 @@
 import sessionActionTypes from "./action-types";
 
 const initialState = {
-  isLogged: false,
+  isLogged: true,
   user: {}
 }
 
