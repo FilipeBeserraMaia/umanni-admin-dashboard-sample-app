@@ -1,4 +1,5 @@
 
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import {Navigate } from 'react-router-dom';
 import Login from "../Login";
@@ -15,41 +16,40 @@ import MyProfile from "../../my_profile";
 const NavigateToRoot =  ()=> <Navigate to="/"/> 
 const NavigateToLogin =  ()=> <Navigate to="/login"/> 
 
+
 const alreadyLogged = (Component) => {
-  return Component
-
-  const state = store.getState();
-  const isUserLogged =  state.sessionReducer.isLogged
-  console.log(state)
-
-    if (isUserLogged){
-      return NavigateToRoot
+  const VERIFY = () => {
+    const isLogged =  useSelector(state => state.sessionReducer.isLogged)
+    return isLogged
+    ?
+     <NavigateToRoot/>
+    :
+      <Component/>
     }
-
-    return Component
+  return  VERIFY;
 }
 
 
-const requireAuth = (Component = NavigateToRoot) => {
-  // return Component
-  const state = store.getState();
-  const isUserLogged =  state.sessionReducer.isLogged
-  console.log(state)
-  if (isUserLogged){
-      return Component
-  }
-
-  return  NavigateToLogin
+const requireAuth = (Component) => {
+  const VERIFY = () => {
+    const isLogged =  useSelector(state => state.sessionReducer.isLogged)
+    return isLogged
+    ?
+      <Component/>
+    :
+     <NavigateToLogin/>
+    }
+  return  VERIFY;
 }
 
 
 const routeList= [
-  {exact:true, path:"/login", component: Login, key:"login"},
-  {exact:true, path:"/sign_up", component: SignUp, key:"sign_up"},
-  {exact:true, path:"/users_dashboard", component: UsersDashboard, key:"users_dashboard"},
-  {exact:true, path:"/my_profile", component: MyProfile, key:"my_profile"},
+  {exact:true, path:"/login", component: alreadyLogged(Login), key:"login"},
+  {exact:true, path:"/sign_up", component: alreadyLogged(SignUp), key:"sign_up"},
+  {exact:true, path:"/users_dashboard", component: requireAuth(UsersDashboard), key:"users_dashboard"},
+  {exact:true, path:"/my_profile", component: requireAuth(MyProfile), key:"my_profile"},
   // {exact:true, path:"/dashboard", component: Dashboard, key:"dashboard"},
-  {exact:false, path:"/", component: HomePage , key:"root"},
+  {exact:false, path:"/", component: requireAuth(HomePage) , key:"root"},
   {exact:false, path:"*", component: NavigateToRoot , key:"not-found"},
 ]
 

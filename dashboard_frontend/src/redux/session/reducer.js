@@ -1,8 +1,9 @@
 import sessionActionTypes from "./action-types";
 
 const initialState = {
-  isLogged: true,
-  user: {}
+  isLogged: false,
+  user: {},
+  session: {}
 }
 
 
@@ -15,17 +16,19 @@ const sessionReducer = (state=initialState,action) => {
       return {
         ...state,
         isLogged:true,
-        user:action.payload
+        user: {...action.payload.data},
+        session:{...action.session}
+
       };
-    case 'LOGOUT':
+    case sessionActionTypes.LOGOUT:
       return {
         ...initialState
       };
-    case 'UPDATE-USER':
+    case sessionActionTypes.UPDATE_USER:
       return {
-        ...state,
-        user:action.payload
+        ...state,user:{...action.payload} 
       };
+
     default:
       return state;
 

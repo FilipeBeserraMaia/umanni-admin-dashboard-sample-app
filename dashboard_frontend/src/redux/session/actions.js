@@ -5,18 +5,47 @@ import sessionActionTypes from "./action-types";
 
 export const login = ({ email, password },callBack) =>  {
 
-
-  return   (dispatch) =>  {
-    api.post('/auth/sign_in',{
+  return   async (dispatch) =>  {
+  
+    await api.post('/auth/sign_in',{
       email,
       password
-    }).then(({data}) => {
+    }).then((response) => { 
         dispatch({
           type: sessionActionTypes.LOGIN,
-          payload: data
+          payload: response.data,
+          session: response.headers
         })
-        callBack(data);
+        callBack(response.data);
       })
       .catch(e => {callBack(null,e?.response?.data?.error || e)})
   }
 }
+
+
+export const logout = (callBack) =>  {
+
+  return   async (dispatch) =>  {
+  
+    await api.delete('/auth/sign_out').then((response) => { 
+        dispatch({
+          type: sessionActionTypes.LOGOUT
+        })
+        callBack(response.data);
+      })
+      .catch(e => {callBack(null,e?.response?.data?.error || e)})
+  }
+}
+
+
+export const signUp = (values ,callBack) =>  {
+
+  return   async () =>  {
+    await api.post('/auth',values).then((response) => { 
+        callBack(response.data);
+      })
+      .catch(e => {callBack(null,e?.response?.data?.error || e)})
+  }
+}
+
+

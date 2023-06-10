@@ -6,32 +6,21 @@ import { tokens } from "../../theme";
 import { useTheme } from "@emotion/react";
 import ThemeButton from "./ThemeButton";
 import { Formik,Form, Field } from "formik";
-import * as Yup from 'yup';
-// import { useHistory } from 'react-router-dom';
-
-// import store from '../../redux/store';
- 
+import * as Yup from 'yup'; 
 import { login } from "../../redux/session/actions";
 import { useDispatch,useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-// import rootReducer from "../../redux/root-reducer";
+import { errorToast,successToast } from "../../helpers/notifications/toasts";
+
 const Login = ()=>{
   const theme = useTheme()
   const colors = tokens(theme.palette.mode);
   const paperStyle={padding:20,height:'10%',width:300,margin:'20px auto' }
   const avatarStyle={backgroundColor:colors.greenAccent[500]}
   const dispatch = useDispatch()
-  const history = useNavigate();
-  const {isLogged,user} = useSelector((rootReducer)=> rootReducer.sessionReducer);
 
-  useEffect(()=>{
-    if(isLogged){
-     history('/')
-    }
-  })
-
+ 
   
-  const initialValuesForm = { email:"filipeifgcc@gmail.com", password:"12345679" }
+  const initialValuesForm = { email:"filipe@gmail.com", password:"12345678" }
   const formValidations = Yup.object().shape({
     email: Yup.string().email("Invalid Email").required("this field is required ! "), 
     password: Yup.string().required('this field is required ! '),
@@ -42,10 +31,11 @@ const Login = ()=>{
     dispatch(login(values,(res,err)=>{
       setSubmitting(false);
       if(res){
-        console.log(res)
+        successToast("Successfully logged in");
+        return;
       }
       if(err){
-        console.log(err)
+        err.response.data.errors.map(e=> errorToast(e))
         return;
       }
     }))
@@ -83,7 +73,11 @@ const Login = ()=>{
           )}
 
         </Formik>
-        <Typography>Do you have any account ?<Link href="/sign_up"> Sign up ? </Link></Typography>
+        <Typography> Are you a visitor? 
+          <Link 
+            href="/sign_up"
+            > Sign up ? </Link>
+        </Typography>
       </Paper>
     </Grid>
   )}

@@ -25,7 +25,7 @@ class Api::V1::UsersController < ApplicationController
 
   def update 
     if @user.update(user_params)
-      render json: @user.as_json(methods: [:full_name]), status: :ok
+      render json: @user.as_json(include:[:role], methods: [:full_name]), status: :ok
     else
       render json: {errors: @user.errors.full_messages}, status: :unprocessable_entity  # 422
     end 
@@ -34,7 +34,9 @@ class Api::V1::UsersController < ApplicationController
 
 
   def edit
+   
     render json: @user.as_json(methods: [:full_name]), status: :ok
+
   end
 
 

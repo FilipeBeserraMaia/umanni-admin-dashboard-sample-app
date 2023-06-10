@@ -6,7 +6,6 @@ import "react-pro-sidebar/dist/css/styles.css";
 import { tokens } from "../../../theme";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
-import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 
 
@@ -126,14 +125,7 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
-            <Item
-              title="My Profile"
-              to="/my_profile"
-              icon={<PersonOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-
+            
           </Box>
         </Menu>
       </ProSidebar>
