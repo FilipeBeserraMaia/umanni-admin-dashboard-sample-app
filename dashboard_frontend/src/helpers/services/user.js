@@ -24,3 +24,13 @@ export const updateUserApi = (userId,params) =>  {
 export const allUserRolesApi = (params) =>  {
   return  api.get(`/users/roles`,params)
 }
+
+export const importUsersApi = (params) =>  {
+
+  api.interceptors.request.use(config =>{
+    config.headers["Content-Type"] = "multipart/form-data";
+    return config;
+  })
+    
+  return api.post(`/users/import`,params)
+}

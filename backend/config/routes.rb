@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       resources :sessions, only: [:create,:destroy]
       resources :users, only: [:index,:create,:destroy,:edit,:update] do 
           get :roles, on: :collection 
+          post :import, on: :collection
       end
 
     end

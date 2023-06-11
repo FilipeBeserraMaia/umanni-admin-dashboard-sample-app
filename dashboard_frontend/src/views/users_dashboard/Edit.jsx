@@ -32,7 +32,6 @@ const Edit = (props)=> {
     
   }
 
-  debugger 
 
 
   const formValidations = Yup.object().shape({

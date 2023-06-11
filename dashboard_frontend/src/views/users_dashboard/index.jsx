@@ -12,7 +12,8 @@ import PopUp from "../components/PopUp";
 import AddIcon from '@mui/icons-material/Add';
 import  New  from "./New";
 import  Edit  from "./Edit";
-
+import SpreadsheetUpload from './SpreadsheetUpload'
+import FileUploadIcon from '@mui/icons-material/FileUpload';
 
 
 const UserDashboard = () => {
@@ -157,6 +158,21 @@ const UserDashboard = () => {
               }
           >
          </PopUp>
+
+
+        <PopUp 
+            custom={
+                {
+                  BtnIcon:FileUploadIcon,
+                  maxWidth: "xs",
+                  iconColor: colors.greenAccent[500],
+                  formComponent: SpreadsheetUpload,
+                  btnColor: colors.greenAccent[500],variant:"contained"
+                }
+              }
+          >
+         </PopUp>
+
 
         <DataGrid  rows={collection} columns={columns} />
       </Box>

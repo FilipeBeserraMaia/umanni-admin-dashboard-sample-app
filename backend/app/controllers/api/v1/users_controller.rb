@@ -38,6 +38,9 @@ class Api::V1::UsersController < ApplicationController
   end
 
 
+
+
+
   def destroy
 
     if @user.destroy 
@@ -45,6 +48,13 @@ class Api::V1::UsersController < ApplicationController
     else
       render json: {errors: @user.errors.full_messages}, status: :unprocessable_entity # 422
     end
+  end
+
+
+  def import
+    user_import_service = UserImportService.new(params[:file])
+    user_import_service.import_users
+    render json: { message: 'Import successful' }
   end
 
   def roles

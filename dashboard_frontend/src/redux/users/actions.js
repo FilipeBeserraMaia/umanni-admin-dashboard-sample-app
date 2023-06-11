@@ -1,4 +1,4 @@
-import { getAllUsersApi, deleteUserApi, createUserApi, editUserApi, updateUserApi } from "../../helpers/services/user";
+import { getAllUsersApi, deleteUserApi, createUserApi, editUserApi, updateUserApi, importUsersApi } from "../../helpers/services/user";
 import usersActionTypes from "./action-types";
 import api from "../../helpers/services/api";
 import sessionActionTypes from "../session/action-types";
@@ -84,6 +84,16 @@ export const updateUser = (userId,params,callBack) =>  {
         })
 
       }
+      callBack(data);
+    })
+      .catch(e => {callBack(null,e?.response?.data?.error || e)})
+  }
+}
+
+export const importUsers = (params,callBack) =>  {
+
+  return   () =>  {
+      importUsersApi(params).then(({data}) => {
       callBack(data);
     })
       .catch(e => {callBack(null,e?.response?.data?.error || e)})
