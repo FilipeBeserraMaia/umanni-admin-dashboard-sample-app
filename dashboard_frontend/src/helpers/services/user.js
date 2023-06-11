@@ -21,3 +21,6 @@ export const editUserApi = (userId,params={}) =>  {
 export const updateUserApi = (userId,params) =>  {
   return  api.put(`/users/${userId}`,params)
 }
+export const allUserRolesApi = (params) =>  {
+  return  api.get(`/users/roles`,params)
+}

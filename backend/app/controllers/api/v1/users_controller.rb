@@ -10,13 +10,11 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def create 
-
     @user = User.new(user_params.merge(password: params[:password],
       password_confirmation: params[:password_confirmation]))
-
-
+    
     if @user.save
-      render json: @user.as_json(methods: [:full_name]), status: :ok
+      render json: default_user_json, status: :ok
     else
       render json: {errors: @user.errors.full_messages}, status: :unprocessable_entity  # 422
     end 
@@ -25,7 +23,7 @@ class Api::V1::UsersController < ApplicationController
 
   def update 
     if @user.update(user_params)
-      render json: @user.as_json(include:[:role], methods: [:full_name]), status: :ok
+      render json: default_user_json, status: :ok
     else
       render json: {errors: @user.errors.full_messages}, status: :unprocessable_entity  # 422
     end 
@@ -35,7 +33,7 @@ class Api::V1::UsersController < ApplicationController
 
   def edit
    
-    render json: @user.as_json(methods: [:full_name]), status: :ok
+    render json: default_user_json, status: :ok
 
   end
 
@@ -43,12 +41,16 @@ class Api::V1::UsersController < ApplicationController
   def destroy
 
     if @user.destroy 
-      render json: @user.as_json, status: :ok
+      render json: default_user_json, status: :ok
     else
       render json: {errors: @user.errors.full_messages}, status: :unprocessable_entity # 422
     end
   end
 
+  def roles
+    @roles = Role.all
+    render json: @roles.as_json, status: :ok
+  end
 
   private
 
@@ -57,7 +59,11 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name,:last_name,:password,:password_confirmation,:email)
+    params.require(:user).permit(:first_name,:last_name,:password,:password_confirmation,:email,
+      user_role_attributes: [:id, :user_id, :role_id])
   end
-
+  
+  def  default_user_json
+     @user.as_json(include:[:role], methods: [:full_name])
+  end
 end

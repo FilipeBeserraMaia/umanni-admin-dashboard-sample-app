@@ -7,7 +7,7 @@ import { tokens } from "../../../theme";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
-
+import { useSelector } from "react-redux";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
@@ -32,6 +32,7 @@ const Sidebar = () => {
   const colors = tokens(theme.palette.mode);
   const [isCollapsed, setIsCollapsed] = useState(true);
   const [selected, setSelected] = useState("Dashboard");
+  const {user} = useSelector((state)=> state.sessionReducer);
 
   return (
     <Box
@@ -101,10 +102,10 @@ const Sidebar = () => {
                   fontWeight="bold"
                   sx={{ m: "10px 0 0 0" }}
                 >
-                  Admin name 
+                  {user.full_name} 
                 </Typography>
                 <Typography variant="h5" color={colors.grey[300]}>
-                  Default user role
+                  {user.role.name}
                 </Typography>
               </Box>
             </Box>

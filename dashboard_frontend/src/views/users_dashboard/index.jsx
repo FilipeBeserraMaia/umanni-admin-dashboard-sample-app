@@ -65,6 +65,15 @@ const UserDashboard = () => {
       align: "left",
     },
     {
+      field: "role",
+      headerName: "Role",
+      flex:1,
+      headerAlign: "left",
+      align: "left",
+      renderCell: ({row: {role}})=>{return role.name}
+    },
+
+    {
       field: "actions",
       headerName: "Actions",
       flex:1,

@@ -11,7 +11,6 @@ const Edit = (props)=> {
   const userId = props.custom.userId;
   useEffect(()=> { dispatch(editUser(userId,(res,err)=>{
     if(res){
-      // console.log(res)
     }
     if(err){
       return;
@@ -27,8 +26,14 @@ const Edit = (props)=> {
     "last_name": user.last_name,
     "email": user.email,
     "password":"",
-    "password_confirmation":""
+    "password_confirmation":"",
+    "user_role_attributes": { role_id: user.role.id },
+
+    
   }
+
+  debugger 
+
 
   const formValidations = Yup.object().shape({
     email: Yup.string().email("Invalid Email").required("this field is required ! "), 

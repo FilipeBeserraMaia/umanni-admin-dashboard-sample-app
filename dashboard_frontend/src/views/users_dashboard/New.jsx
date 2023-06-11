@@ -13,6 +13,7 @@ const New = (props)=> {
   const _onSubmit  = (values,{setSubmitting}) => {
 
          dispatch(createUser(values,(res,err)=>{
+          setSubmitting(false)
           if(res){
             console.log("deu bomm")
             props.custom.closeModal()

@@ -21,13 +21,17 @@ export const usersIndex = (callBack) =>  {
 
 export const deleteUser = (userId,callBack) =>  {
 
-  return   (dispatch) =>  {
+  return   (dispatch,getState) =>  {
+    const  loggedUserId = getState().sessionReducer.user.id 
     deleteUserApi(userId).then(({data}) => {
       dispatch({
         type: usersActionTypes.DELETE,
         payload: data,
         deletedUserId: userId
       })
+      if(loggedUserId == userId ){
+        dispatch({ type: sessionActionTypes.LOGOUT })
+      }
       callBack(data);
     })
       .catch(e => {callBack(null,e?.response?.data?.error || e)})
@@ -50,6 +54,7 @@ export const createUser = (userId,callBack) =>  {
 
 export const editUser = (userId,callBack) =>  {
   return   (dispatch) =>  {
+
     editUserApi(userId).then(({data}) => {
       dispatch({
         type: usersActionTypes.EDIT,
@@ -63,7 +68,7 @@ export const editUser = (userId,callBack) =>  {
 }
 
 export const updateUser = (userId,params,callBack) =>  {
-  
+
 
   return   (dispatch,getState) =>  {
     const  loggedUserId = getState().sessionReducer.user.id 
