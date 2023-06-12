@@ -60,7 +60,7 @@ return (
                 alt="profile-user"
                 width="50px"
                 height="50px"
-                src={`../../../assets/user.png`}
+                src={ user.url_file ? user.url_file :  `../../../assets/user.png`}
                 style={{ cursor: "pointer",
                   borderRadius: "50%",
                   border:'10px',

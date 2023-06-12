@@ -33,7 +33,7 @@ const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(true);
   const [selected, setSelected] = useState("Dashboard");
   const {user} = useSelector((state)=> state.sessionReducer);
-
+  
   return (
     <Box
       sx={{
@@ -88,7 +88,7 @@ const Sidebar = () => {
                   alt="profile-user"
                   width="100px"
                   height="100px"
-                  src={`../../../assets/user.png`}
+                  src={ user.url_file ? user.url_file :  `../../../assets/user.png`}
                   style={{ cursor: "pointer",
                     borderRadius: "50%",
                     border:'10px',
@@ -119,14 +119,22 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
-            <Item
+          
+
+            {
+              user.role.name == "admin"  ?
+             <Item
               title="users Admin Dashboard"
               to="/users_dashboard"
               icon={<SupervisorAccountIcon />}
               selected={selected}
               setSelected={setSelected}
             />
-            
+            : 
+             <></>
+
+            }
+
           </Box>
         </Menu>
       </ProSidebar>

@@ -19,6 +19,11 @@ export const editUserApi = (userId,params={}) =>  {
 
 
 export const updateUserApi = (userId,params) =>  {
+  api.interceptors.request.use(config =>{
+    config.headers["Content-Type"] = "multipart/form-data;";
+    return config;
+  })
+
   return  api.put(`/users/${userId}`,params)
 }
 export const allUserRolesApi = (params) =>  {

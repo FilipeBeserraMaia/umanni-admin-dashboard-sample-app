@@ -71,3 +71,4 @@ yarn-debug.log*
 /backend/tmp
 /backend/config/database.yml
 /backend/test/
+/backend/storage

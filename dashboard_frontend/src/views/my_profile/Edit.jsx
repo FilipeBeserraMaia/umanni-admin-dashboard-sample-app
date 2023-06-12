@@ -18,7 +18,8 @@ const Edit = (props)=> {
     "last_name": user.last_name,
     // "email": user.email,
     "password":"",
-    "password_confirmation":""
+    "password_confirmation":"",
+    "file": user.avatar 
   }
 
   const formValidations = Yup.object().shape({
@@ -31,9 +32,14 @@ const Edit = (props)=> {
  
 
 
+ const handleFileChange = (event, setFieldValue) => {
+    const file = event.target.files[0];
+    setFieldValue('file', file);
+  };
 
   const _onSubmit  = (values,{setSubmitting}) => {
       
+  debugger
    dispatch(updateUser(user.id,values,(res,err)=>{
       setSubmitting(false)  
       if(res){
@@ -54,12 +60,17 @@ const Edit = (props)=> {
       validationSchema={formValidations}  
 
       onSubmit={_onSubmit} >
-      {  ({isSubmitting}) => (
+      {  ({isSubmitting,setFieldValue}) => (
 
         <Form>
           <Field name="first_name" label="First Name" placeholder="Enter First Name" type="text" margin="normal"  fullWidth component={TextField}/>
           <Field name="last_name" label="Last Name" placeholder="Enter Last Name" type="text" margin="normal"  fullWidth component={TextField}/>
-          {/* <Field name="email" label="Email" placeholder="Enter Email" type="text" margin="normal"  fullWidth component={TextField}/> */}
+          <input
+              id="file"
+              name="file"
+              type="file"
+              onChange={(event) => handleFileChange(event, setFieldValue)}
+            />
           <Field name="password" label="Password" placeholder="Enter Password" type="password" margin="normal" fullWidth component={TextField}/>
           <Field name="password_confirmation" label="password_confirmation" placeholder="Enter Password Confirmation" type="password" margin="normal" fullWidth component={TextField}/>
           <Button href='' variant="contained" type="submit" fullWidth  disabled={isSubmitting} >Save</Button>
