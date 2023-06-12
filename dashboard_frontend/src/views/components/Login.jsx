@@ -20,7 +20,7 @@ const Login = ()=>{
 
  
   
-  const initialValuesForm = { email:"filipe@gmail.com", password:"12345678" }
+  const initialValuesForm = { email:"", password:"" }
   const formValidations = Yup.object().shape({
     email: Yup.string().email("Invalid Email").required("this field is required ! "), 
     password: Yup.string().required('this field is required ! '),
