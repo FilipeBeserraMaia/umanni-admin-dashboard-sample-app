@@ -1,3 +1,33 @@
+# Main Frontend Libraries Used
+"Material UI":
+Library of styled components for creating attractive interfaces in React.
+
+"Axios":
+Library for making HTTP requests in the browser or Node.js server.
+
+"Formik":
+Library for handling forms in React in a simplified way.
+
+"React":
+Library for creating interactive and reactive user interfaces.
+
+"Redux":
+State management library for React applications.
+
+
+# Main Gems Used in the Backend
+Rails (Ruby on Rails): Framework for web development in Ruby.
+
+Sidekiq: Library for background job processing in Rails applications.
+
+ActionCable: Rails library for real-time functionality in web applications.
+
+Roo: Ruby library for processing spreadsheets.
+
+
+
+
+
 # Prerequisites Backend:
 - Ruby [3.1.4]
 - Ruby on Rails [6.1.7]
