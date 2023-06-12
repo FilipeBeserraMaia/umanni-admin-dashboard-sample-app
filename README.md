@@ -85,16 +85,14 @@ Roo: Ruby library for processing spreadsheets.
 
 # Once the frontend server is running, this should be your application view:
 
-![image](https://github.com/FilipeBeserraMaia/umanni-admin-dashboard-sample-app/assets/60049042/e50ae0bf-5a76-4e4a-baa3-5390710647cf)
-
+![image](https://github.com/FilipeBeserraMaia/umanni-admin-dashboard-sample-app/assets/60049042/51bdbfbc-a962-40e1-b966-8784e660db8f)
 After logging in with a user:
 
-![image](https://github.com/FilipeBeserraMaia/umanni-admin-dashboard-sample-app/assets/60049042/ef041961-c8a7-4e2a-948f-3a33a78d9e74)
+![image](https://github.com/FilipeBeserraMaia/umanni-admin-dashboard-sample-app/assets/60049042/56af23e6-c64c-4cdd-abe0-75c38410c0ae)
 
 After logging in with an admin:
 
-![image](https://github.com/FilipeBeserraMaia/umanni-admin-dashboard-sample-app/assets/60049042/5c9d64a7-a9cb-4455-8487-3f033e4f3b10)
-
+![image](https://github.com/FilipeBeserraMaia/umanni-admin-dashboard-sample-app/assets/60049042/e4672176-fe9d-4f0c-b578-bef04352aab0)
 To import new users:
 
-![image](https://github.com/FilipeBeserraMaia/umanni-admin-dashboard-sample-app/assets/60049042/f6c88e66-7095-4917-9119-06ad5ad27da5)
+![image](https://github.com/FilipeBeserraMaia/umanni-admin-dashboard-sample-app/assets/60049042/4ed19f23-0a78-43f8-afe8-506f0e28af00)
