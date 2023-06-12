@@ -17,16 +17,21 @@
 4. Configure the database:
    a. Edit the config/database.yml file to provide your database settings.
    b. Run the following commands to create the database, execute migrations, and run the rake tasks that create role records and an admin user:
+     ```
       rails db:create
       rails db:migrate
       rake roles_task:create
       rake users_task:create
+   ```
 
 5. Start the server:
-   rails s -p 3001
+    ``` 
+    rails s -p 3001 
+    
+    ```
 
 6. Execute the sidekiq gem for asynchronous processes:
-   sidekiq
+    ``` sidekiq  ```
 
 
 # Prerequisites Frontend:
@@ -39,13 +44,13 @@
    cd umanni-admin-dashboard-sample-app/dashboard_frontend
 
 2. Run npm install:
-   npm install
+    ``` npm install  ```
 
 3. If you encounter any dependency issues, use:
-   npm install --force
+    ``` npm install --force ```
 
 4. Start the server:
-   npm start
+    ``` npm start ```
 
 
 # Once the frontend server is running, this should be your application view:
