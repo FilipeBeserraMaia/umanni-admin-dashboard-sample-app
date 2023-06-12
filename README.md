@@ -1,10 +1,10 @@
-Prerequisites Backend:
+# Prerequisites Backend:
 - Ruby [3.1.4]
 - Ruby on Rails [6.1.7]
 - Database (PostgreSQL)
 
 
-Configuration:
+# Configuration:
 1. Clone this repository to your local system: 
    git clone git@github.com:FilipeBeserraMaia/umanni-admin-dashboard-sample-app.git
 
@@ -29,12 +29,12 @@ Configuration:
    sidekiq
 
 
-Prerequisites Frontend:
+# Prerequisites Frontend:
 - Node [20.1.0]
 - npm [9.6.4]
 
 
-Configuration after cloning the repository:
+# Configuration after cloning the repository:
 1. Navigate to the application directory:
    cd umanni-admin-dashboard-sample-app/dashboard_frontend
 
@@ -48,7 +48,7 @@ Configuration after cloning the repository:
    npm start
 
 
-Once the frontend server is running, this should be your application view:
+# Once the frontend server is running, this should be your application view:
 
 ![image](https://github.com/FilipeBeserraMaia/umanni-admin-dashboard-sample-app/assets/60049042/e50ae0bf-5a76-4e4a-baa3-5390710647cf)
 
