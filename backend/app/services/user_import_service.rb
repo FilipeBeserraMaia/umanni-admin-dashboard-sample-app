@@ -2,16 +2,19 @@ require 'roo'
 require 'roo-xls'
 
 class UserImportService
-  def initialize(file)
-    @file = file
-  end
 
-  def import_users
 
-    spreadsheet = Roo::Excel.new(@file.path, file_warning: :ignore)
+  def self.call(file = nil)
+    return unless file.present?
+    spreadsheet = Roo::Excel.new(file.path, file_warning: :ignore)  
 
-    (2..spreadsheet.last_row).each do |i|
-      row = spreadsheet.row(i)
+    total = spreadsheet.last_row
+    count = 0
+    count_progress = -> (count,total)  {  (count.to_f/ total.to_f ) * 100 }
+
+    users = []
+    (2..spreadsheet.last_row).each_with_index do |row_number,index|
+      row = spreadsheet.row(row_number)
       first_name = row[0]
       last_name = row[1]
       email = row[2]
@@ -26,9 +29,10 @@ class UserImportService
         password: password,
         password_confirmation: password
       }
-      persisted_user = User.where(email: email).first_or_create!(user_attr)
+      users.push(user_attr)
     end 
 
+    ImportUsersJob.perform_later(users: users)
   end
 end
 

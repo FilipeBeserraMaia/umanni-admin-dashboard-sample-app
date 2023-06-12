@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-
+  mount ActionCable.server => '/cable'
   root to: redirect('/api/v1') 
    
   namespace :api do 

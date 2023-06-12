@@ -14,7 +14,7 @@ import  New  from "./New";
 import  Edit  from "./Edit";
 import SpreadsheetUpload from './SpreadsheetUpload'
 import FileUploadIcon from '@mui/icons-material/FileUpload';
-
+import UserImportProgress from "./UserImportProgress";
 
 const UserDashboard = () => {
   const theme = useTheme();
@@ -174,6 +174,8 @@ const UserDashboard = () => {
          </PopUp>
 
 
+
+        <UserImportProgress/>
         <DataGrid  rows={collection} columns={columns} />
       </Box>
     </Box>

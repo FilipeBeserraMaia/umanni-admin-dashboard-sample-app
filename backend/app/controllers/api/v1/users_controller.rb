@@ -52,9 +52,9 @@ class Api::V1::UsersController < ApplicationController
 
 
   def import
-    user_import_service = UserImportService.new(params[:file])
-    user_import_service.import_users
-    render json: { message: 'Import successful' }
+
+    UserImportService.call(params[:file])
+    render json: { message: 'Import is Running' }
   end
 
   def roles
