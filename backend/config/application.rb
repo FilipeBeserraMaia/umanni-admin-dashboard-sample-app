@@ -25,11 +25,6 @@ module DashboardBackend
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
-    config.to_prepare do 
-      Dir.glob(Rails.root + "app/overrides/**/*_override*.rb").each do |d|
-       require_dependency d
-      end
-    end
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
